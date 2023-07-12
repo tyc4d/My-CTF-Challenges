@@ -6,4 +6,4 @@ services:
     volumes:
       - ./WebA0-where-is-edward/app/:/app
     ports:
-      - 8700:5000/tcp
+      - 8700:80/tcp

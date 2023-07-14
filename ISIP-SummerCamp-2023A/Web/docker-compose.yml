@@ -13,3 +13,9 @@ services:
       - ./WebB0-buy-flag/app/:/app
     ports:
       - 8002:80/tcp
+  sql-1:
+    image: tiangolo/uwsgi-nginx-flask:python3.8
+    volumes:
+      - ./login-me-basic/app/:/app
+    ports:
+      - 8003:80/tcp

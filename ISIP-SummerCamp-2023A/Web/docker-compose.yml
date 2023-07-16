@@ -18,4 +18,10 @@ services:
     volumes:
       - ./login-me-basic/app/:/app
     ports:
-      - 8003:80/tcp
+      - 8003:80/
+  sql-2:
+    image: tiangolo/uwsgi-nginx-flask:python3.8
+    volumes:
+      - ./login-me/app/:/app
+    ports:
+      - 8004:80/tcp

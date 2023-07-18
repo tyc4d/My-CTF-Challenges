@@ -21,7 +21,7 @@ def make_session_permanent():
 @app.route("/",methods=["GET"])
 def home():
     resp = make_response(render_template("blog.html"))
-    resp.set_cookie("userID","FLAG{N0w_u_k0nw_g3t_method}")
+    resp.set_cookie("userID","FLAG{N0w_u_k0nw_g3t_method01}")
     return resp
     
 @app.route("/magic_admin",method=["GET"])

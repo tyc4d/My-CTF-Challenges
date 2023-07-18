@@ -1,5 +1,5 @@
 # -*- coding:utf8 -*-
-from flask import Flask, render_template, redirect, request, session
+from flask import Flask, render_template, redirect, request, session,make_response
 from base64 import b64encode
 from datetime import timedelta
 
@@ -21,7 +21,7 @@ def make_session_permanent():
 @app.route("/",methods=["GET"])
 def home():
     resp = make_response(render_template("blog.html"))
-    resp.set_cookie("userID","FLAG{N0w_u_k0nw_g3t_method}")
+    resp.set_cookie("userID","FLAG{N0w_u_k0nw_g3t_method01}")
     return resp
     
 @app.route("/login",methods=["GET","POST"])

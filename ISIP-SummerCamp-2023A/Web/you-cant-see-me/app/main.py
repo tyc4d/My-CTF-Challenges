@@ -27,9 +27,9 @@ def user_list():
 def user_profile(userid):
     if userid == "5":
         return redirect("/user/9",302)
-    else if userid == "9":
+    elif userid == "9":
         return redirect("/user/20",302)
-    else if userid == "20":
+    elif userid == "20":
         return redirect("/user/2",302)
     cat_profile = next((cat for cat in cat_profiles if cat['id'] == int(userid)), None)
     if cat_profile:

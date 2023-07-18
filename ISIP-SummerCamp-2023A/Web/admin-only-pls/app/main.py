@@ -1,4 +1,4 @@
-from flask import Flask, render_template,redirect
+from flask import Flask, render_template
 import sqlite3
 
 app = Flask(__name__)
@@ -16,7 +16,7 @@ cat_profiles = [
     {'id': 8, 'cat_name': 'Snowball', 'cat_image': 'snowball.jpg'},
     {'id': 9, 'cat_name': 'Simba', 'cat_image': 'simba.jpg'},
     {'id': 10, 'cat_name': 'Luna', 'cat_image': 'luna.jpg'},
-    {'id': 20, 'cat_name': 'Edward FLAG{You_saw!!!}', 'cat_image': 'edward.jpg'}
+    {'id': 1022, 'cat_name': 'Edward FLAG{vertical_access}', 'cat_image': 'edward.jpg'}
 ]
 
 @app.route('/')
@@ -25,13 +25,10 @@ def user_list():
 
 @app.route('/user/<userid>')
 def user_profile(userid):
-    if userid == "5":
-        return redirect("/user/9",302)
-    elif userid == "9":
-        return redirect("/user/20",302)
-    elif userid == "20":
-        return "FLAG{You_saw!!!}"
     cat_profile = next((cat for cat in cat_profiles if cat['id'] == int(userid)), None)
+
+    if userid == "1022":
+        
     if cat_profile:
         return render_template('user_profile.html', cat_name=cat_profile['cat_name'], cat_image=cat_profile['cat_image'])
     else:

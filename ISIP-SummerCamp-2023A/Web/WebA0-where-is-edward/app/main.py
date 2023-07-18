@@ -16,7 +16,7 @@ cat_profiles = [
     {'id': 8, 'cat_name': 'Snowball', 'cat_image': 'snowball.jpg'},
     {'id': 9, 'cat_name': 'Simba', 'cat_image': 'simba.jpg'},
     {'id': 10, 'cat_name': 'Luna', 'cat_image': 'luna.jpg'},
-    {'id': 20, 'cat_name': 'Edward FLAG{N0w_u_k0nw_g3t_method}', 'cat_image': 'edward.jpg'}
+    {'id': 1022, 'cat_name': 'Edward FLAG{My_English_N4m3}', 'cat_image': 'edward.jpg'}
 ]
 
 @app.route('/')

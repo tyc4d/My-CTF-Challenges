@@ -31,3 +31,9 @@ services:
       - ./login-me/app/:/app
     ports:
       - 8004:80/tcp
+  you-cant-see-me:
+    image: tiangolo/uwsgi-nginx-flask:python3.8
+    volumes:
+      - ./you-cant-see-me/app/:/app
+    ports:
+      - 8005:80/tcp

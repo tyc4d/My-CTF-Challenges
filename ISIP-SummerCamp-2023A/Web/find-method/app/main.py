@@ -63,8 +63,9 @@ def admin_logout():
     else:
         return redirect("/login",302)
     
-@app.route("/api/user/delete",methods=["GET","DELETE"])
-def admin_delete():
+@app.route("/api/user/delete/<userid>",methods=["DELETE"])
+def admin_delete(userid):
+
     return render_template("panel-user.html")
 
 

@@ -1,3 +1,4 @@
+# -*- coding:utf8 -*-
 from flask import Flask, render_template, redirect, request, session
 from base64 import b64encode
 from datetime import timedelta
@@ -19,8 +20,10 @@ def make_session_permanent():
 
 @app.route("/",methods=["GET"])
 def home():
-    return render_template("blog.html")
-
+    resp = make_response(render_template("blog.html"))
+    resp.set_cookie("userID","FLAG{N0w_u_k0nw_g3t_method}")
+    return resp
+    
 @app.route("/login",methods=["GET","POST"])
 def login():
     errorMsg=""
@@ -41,11 +44,7 @@ def login():
             session['login_uid'] = username
             return redirect("/admin",302)
         else:
-            errorMsg=' \
-    <div class="ts-notice is-negative u-top-spaced-large"> \
-    <div class="title">密碼錯誤</div> \
-    <div class="content">你會用開發者工嗎？</div> \
-    </div>'
+            errorMsg='<div class="ts-notice is-negative u-top-spaced-large"><div class="title">密碼錯誤</div><div class="content">你會用開發者工嗎?</div></div>'
     return render_template("login.html",errorMsg=errorMsg)
 
 @app.route("/admin",methods=["GET"])
@@ -63,11 +62,10 @@ def admin_logout():
     else:
         return redirect("/login",302)
     
-@app.route("/api/user/delete/<userid>",methods=["DELETE"])
-def admin_delete(userid):
-
+@app.route("/api/user/delete/",methods=["DELETE"])
+def admin_delete():
     return render_template("panel-user.html")
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True,port=8011)

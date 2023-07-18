@@ -24,6 +24,15 @@ def home():
     resp.set_cookie("userID","FLAG{N0w_u_k0nw_g3t_method}")
     return resp
     
+@app.route("/magic_admin",method=["GET"])
+def magicadmin():
+    name = request.cookies.get('userID')
+    if name == "admin":
+        return "FLAG{dont_st0r3_C00kie_in_c1i3nt}"
+    else:
+        return "No Flag For u"
+    return "No Flag For u"
+
 @app.route("/login",methods=["GET","POST"])
 def login():
     errorMsg=""

@@ -1,5 +1,5 @@
 # -*- coding:utf8 -*-
-from flask import Flask, render_template, redirect, request, session
+from flask import Flask, render_template, redirect, request, session,make_response
 from base64 import b64encode
 from datetime import timedelta
 
@@ -68,4 +68,4 @@ def admin_delete():
 
 
 if __name__ == '__main__':
-    app.run(debug=True,port=8011)
+    app.run(debug=True)

@@ -24,7 +24,7 @@ def home():
     resp.set_cookie("userID","FLAG{N0w_u_k0nw_g3t_method01}")
     return resp
     
-@app.route("/magic_admin",method=["GET"])
+@app.route("/magic_admin",methods=["GET"])
 def magicadmin():
     name = request.cookies.get('userID')
     if name == "admin":

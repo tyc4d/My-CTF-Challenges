@@ -16,23 +16,24 @@ cat_profiles = [
     {'id': 8, 'cat_name': 'Snowball', 'cat_image': 'snowball.jpg'},
     {'id': 9, 'cat_name': 'Simba', 'cat_image': 'simba.jpg'},
     {'id': 10, 'cat_name': 'Luna', 'cat_image': 'luna.jpg'},
-    {'id': 20, 'cat_name': 'Edward FLAG{You_saw!!!}', 'cat_image': 'edward.jpg'}
+    {'id': 10233, 'cat_name': 'Not Real Flag', 'cat_image': 'abc.jpg'},
+    {'id': 38401, 'cat_name': 'Edward FLAG{You_saw!!!}', 'cat_image': 'edward.jpg'}
 ]
 
 @app.route('/')
 def user_list():
-    return render_template('user_list.html', cat_profiles=cat_profiles[:-1])
+    return render_template('user_list.html', cat_profiles=cat_profiles[:-2])
 
 @app.route('/user/<userid>')
 def user_profile(userid):
-    if userid == "5":
-        return redirect("/user/9",302)
-    elif userid == "9":
-        return redirect("/user/20",302)
-    elif userid == "20":
-        return "FLAG{You_saw!!!}"
     cat_profile = next((cat for cat in cat_profiles if cat['id'] == int(userid)), None)
-    if cat_profile:
+    if userid == "9" and cat_profile:
+        return render_template('user_pro.html', cat_name=cat_profile['cat_name'], cat_image=cat_profile['cat_image'] ,next_id=10233)
+    elif userid == "10233" and cat_profile:
+        return render_template('user_pro.html', cat_name=cat_profile['cat_name'], cat_image=cat_profile['cat_image'] ,next_id=38401)
+    elif userid == "38401" and cat_profile:
+        return render_template('user_pro.html', cat_name=cat_profile['cat_name'], cat_image=cat_profile['cat_image'] ,next_id=5)
+    elif cat_profile:
         return render_template('user_profile.html', cat_name=cat_profile['cat_name'], cat_image=cat_profile['cat_image'])
     else:
         return "User not found"

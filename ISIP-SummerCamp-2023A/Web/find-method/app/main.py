@@ -23,7 +23,7 @@ def login():
         password = request.form["password"]
         if username == "guest" and password=="guest":
             resp = make_response(render_template("panel.html",usern="guest"))
-            resp.set_cookie("userID","guest")
+            resp.set_cookie("userID","FLAG{dont_st0r3_C00kie_in_c1i3nt}")
             return resp
         elif username == "tyc4d" and password=="password":
             resp = make_response(render_template("panel.html",usern="tyc4d"))

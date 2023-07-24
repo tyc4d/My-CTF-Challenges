@@ -3,7 +3,7 @@ from flask import Flask, render_template, redirect, request, session,make_respon
 from base64 import b64encode
 from datetime import timedelta
 from flask_jwt_extended import JWTManager
-
+cd ..
 app = Flask(__name__,static_folder='static/')
 
 app.config.update(

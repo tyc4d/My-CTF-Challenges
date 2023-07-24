@@ -16,7 +16,7 @@ cat_profiles = [
     {'id': 8, 'cat_name': 'Snowball', 'cat_image': 'snowball.jpg'},
     {'id': 9, 'cat_name': 'Simba', 'cat_image': 'simba.jpg'},
     {'id': 10, 'cat_name': 'Luna', 'cat_image': 'luna.jpg'},
-    {'id': 1022, 'cat_name': 'Edward FLAG{vertical_access}', 'cat_image': 'edward.jpg'}
+    {'id': 11, 'cat_name': 'Edward FLAG{vertical_access}', 'cat_image': 'edward.jpg'}
 ]
 
 @app.route('/')
@@ -27,7 +27,7 @@ def user_list():
 def user_profile(userid):
     cat_profile = next((cat for cat in cat_profiles if cat['id'] == int(userid)), None)
 
-    if userid == "1022":
+    if userid == "11":
         
     if cat_profile:
         return render_template('user_profile.html', cat_name=cat_profile['cat_name'], cat_image=cat_profile['cat_image'])

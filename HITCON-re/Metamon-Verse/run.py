@@ -13,9 +13,9 @@ pip install redis
 apt install redis-server
 '''
 
-PORT = 80
-PUBLIC_ADDRESS  = '54.250.88.37'
-AVAILABLE_PORTS = list(range(20000, 40000))
+PORT = 8081
+PUBLIC_ADDRESS  = '18.163.8.31'
+AVAILABLE_PORTS = list(range(6000, 7000))
 shuffle(AVAILABLE_PORTS)
 
 INDEX = '''
@@ -83,7 +83,7 @@ def submit():
 if __name__ == '__main__':
     if 'debug' in sys.argv:
         app.debug = True
-        PORT = 80
+        PORT = 8081
 
     print('Listening on http://%s:%d/' % (PUBLIC_ADDRESS, PORT))
-    app.run('0.0.0.0', PORT)
+    app.run('0.0.0.0', port=PORT)

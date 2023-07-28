@@ -1,7 +1,12 @@
-FROM mcr.microsoft.com/windows/servercore/iis
+# escape=`
+FROM mcr.microsoft.com/dotnet/framework/aspnet:4.8
 
-RUN powershell -NoProfile -Command Remove-Item -Recurse C:\inetpub\wwwroot\*
+SHELL ["powershell"]
 
-WORKDIR /inetpub/wwwroot
+COPY src /inetpub/wwwroot/whysoserial
+ RUN Remove-WebSite -Name 'Default Web Site'
+ RUN New-Website -Name 'whysoserial' -Port 80 `
+     -PhysicalPath 'c:\inetpub\wwwroot\whysoserial' -ApplicationPool '.NET v4.5'
+EXPOSE 80
 
-COPY src/ .
+ENTRYPOINT ["C:\\ServiceMonitor.exe", "w3svc"]

@@ -31,8 +31,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" || isset($_GET["delete"])) {
         die("Homework has been closed, no more changes!");
     }
     
-    $submission_query = $pdo->prepare("SELECT * FROM submission WHERE userid=? AND homeworkid=?");
-    $submission_query->execute(array($_SESSION["userid"], $homeworkid));
+    $submission_query = $pdo->prepare("SELECT * FROM submission WHERE homeworkid=?");
+    $submission_query->execute(array($homeworkid));
     $result = $submission_query->fetch();
 
     if (!$result) {
@@ -62,8 +62,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" || isset($_GET["delete"])) {
                 $_POST["content"]
             ));
 
-            $hash_query = $pdo->prepare("SELECT `hash` FROM submission WHERE userid=? AND homeworkid=?");
-            $hash_query->execute(array($_SESSION["userid"], $_POST["homeworkid"]));
+            $hash_query = $pdo->prepare("SELECT `hash` FROM submission WHERE homeworkid=?");
+            $hash_query->execute(array($_POST["homeworkid"]));
             $result = $hash_query->fetch();
 
             http_response_code(302);
@@ -78,6 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" || isset($_GET["delete"])) {
         } else {
             if (!hash_equals($_GET["delete"], $result["hash"])) {
                 http_response_code(403);
+                echo $result["hash"];
                 die("No permission to delete");
             }
 

@@ -23,11 +23,11 @@ services:
   web:
     build:
       context: ./
-      # args:
-        # TURNSTILE_SECRETKEY: <your own key>
-        # TURNSTILE_SITEKEY: <your own key>
+      args:
+        TURNSTILE_SITEKEY: 0x4AAAAAAAIvQqkHykLcud99
+        TURNSTILE_SECRETKEY: 0x4AAAAAAAIvQg18yY4Tl4WV-PeWCR8DDeM
     environment:
-      - FLAG=hitcon{not_flag}
+      - FLAG=hitcon{pHp_1s_the_b35t_1ang}
     ports:
       - 8210:80/tcp
     depends_on:

@@ -1,15 +1,15 @@
 from flask import Flask, render_template, session, request
 import secrets
 
-app = Flask(__name__)
+app = Flask(__name__,static_folder='static/')
 app.secret_key = secrets.token_bytes()
 
-items = {5427: ("White Cat", 1024),
-         5428: ("Orange Cat", 1024),
-         5429: ("Ranibow Cat", 4096),
-         5430: ("FLAG", 2147483648),
-         5431: ("Evil Cat", 65536),
-         5432: ("Null Cat", 0)}
+items = {5427: ("我的世界2023 Point", 1024),
+         5428: ("傅說對決 Back Point", 1024),
+         5429: ("尬許Point", 4096),
+         5430: ("FLAG Point", 2147483648),
+         5431: ("買喀Point", 65536),
+         5432: ("哈密Point", 0)}
 
 
 @app.route("/")

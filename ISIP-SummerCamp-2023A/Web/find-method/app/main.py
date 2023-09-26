@@ -1,13 +1,11 @@
 # -*- coding:utf8 -*-
-from flask import Flask, render_template, redirect, request, session,make_response
-from base64 import b64encode
-from datetime import timedelta
+from flask import Flask, render_template, redirect, request, make_response
 
 app = Flask(__name__,static_folder='static/')
 
 @app.route("/",methods=["GET"])
 def home():
-    resp = make_response(render_template("blog.html"))
+    resp = make_response(render_template("index.html"))
     resp.headers["Flag-From-Server"] = "FLAG{N0w_u_k0nw_g3t_method}"
     return resp
     
@@ -21,16 +19,17 @@ def login():
     if request.method == "POST":
         username = request.form["username"]
         password = request.form["password"]
+        # Hardcoded Username And Password
         if username == "guest" and password=="guest":
             resp = make_response(render_template("panel.html",usern="guest"))
-            resp.set_cookie("userID","FLAG{dont_st0r3_C00kie_in_c1i3nt}")
+            resp.set_cookie("userID","guest")
+            resp.set_cookie("userSpecialData","FLAG{dont_st0r3_C00kie_in_c1i3nt}")
             return resp
-        elif username == "tyc4d" and password=="password":
-            resp = make_response(render_template("panel.html",usern="tyc4d"))
-            resp.set_cookie("userID","tyc4d")
-            return resp
+        elif username == "admin":
+            errorMsg = '<div class="ts-notice is-negative u-top-spaced-large"><div class="title">此帳號已停用</div><div class="content">P.S. 試試看先登入其他帳號?</div></div>'
+            return render_template("login.html",errorMsg=errorMsg)
         else:
-            errorMsg='<div class="ts-notice is-negative u-top-spaced-large"><div class="title">密碼錯誤</div><div class="content">你會用開發者工具嗎?</div></div>'
+            errorMsg='<div class="ts-notice is-negative u-top-spaced-large"><div class="title">密碼錯誤</div><div class="content">P.S. 你會用開發者工具嗎?</div></div>'
             return render_template("login.html",errorMsg=errorMsg)
     return render_template("login.html",errorMsg=errorMsg)
 
@@ -38,22 +37,15 @@ def login():
 def admin_home():
     name = request.cookies.get('userID')
     if name == "admin":
-        return render_template("panel.html",flagmsg="FLAG{dont_st0r3_C00kie_in_c1i3nt}")
+        return render_template("panel-flag.html",usern=name,flagmsg="FLAG{dont_st0r3_C00kie_in_c1i3nt}")
     else:
         return redirect("/login",302)
 @app.route("/logout",methods=["GET"])
 def admin_logout():
     resp = make_response(redirect("/login",302))
     resp.delete_cookie("userID")
+    resp.delete_cookie("userSpecialData")
     return resp
     
-@app.route("/api/user/delete/",methods=["DELETE"])
-def admin_delete():
-    if request.method == "DELETE":
-        return "FLAG{u_f0und_4pi}"
-    else:
-        return "No Flag For U"
-
-
 if __name__ == '__main__':
     app.run(debug=True)

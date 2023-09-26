@@ -30,8 +30,8 @@
         </div>
     </nav>
     <main class="container my-5">
-        <div class="alert alert-danger" role="alert">
-            Admin Only ! 使用者 {{usern}} 並沒有權限查看未發布的貼文
+        <div class="alert alert-success" role="alert">
+            歡迎回來!
           </div>
         <h2 class="mb-4">Posts</h2>
         <table class="table">
@@ -66,6 +66,18 @@
                     <th>Date</th>
                 </tr>
             </thead>
+            <tbody>
+                <tr>
+                    <td>My First Blog Post !</td>
+                    <td>{{flagmsg}}</td>
+                    <td>2023-05-29</td>
+                </tr>
+                <tr>
+                    <td>The Secret of the website</td>
+                    <td>Jane Smith</td>
+                    <td>2023-06-29</td>
+                </tr>
+            </tbody>
         </table>
     </main>
     <footer class="bg-dark text-white py-3 text-center">

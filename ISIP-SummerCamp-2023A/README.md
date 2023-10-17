@@ -1,4 +1,16 @@
 # Web 題目說明
+
+- 如何啟動?
+- 個別題目說明以及連線資訊
+
+## How to Start the lab
+- First you must in the directory `Web_Verified`
+- Next, enter the command below
+
+```
+docker-compose up -d
+```
+
 ## Find GET Method 
 > 你會使用開發者工具找到神秘的 header 嗎?
 - [ ] Port: 8007

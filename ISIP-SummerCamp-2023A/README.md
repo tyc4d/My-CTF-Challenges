@@ -46,8 +46,9 @@ P.S. 小宸在網頁開發部門工作，他在部署測試環境時忘記將開
 > 你知道水平越權是什麼嗎？你能幫我找找 Edward 在哪裡嗎？
 - [ ] Port: 8001
 
-
-```GET /user/§5§ HTTP/1.1Host: ctf-isip.tyc4d.tw:8001Cache-Control: max-age=0Upgrade-Insecure-Requests: 1User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.5735.199 Safari/537.36Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7Referer: http://ctf-isip.tyc4d.tw:8001/Accept-Encoding: gzip, deflateAccept-Language: en-US,en;q=0.9Cookie: session=286d8192-f687-4fc2-b45c-a18c8df0a7d1.vMjCIR82uYDbDrjYWiH2zW9GPs4Connection: close
+Hint: 我為你攔截好封包ㄌ，可以送到 BurpSuite Inturder 分析唷
+```
+GET /user/§5§ HTTP/1.1Host: ctf-isip.tyc4d.tw:8001Cache-Control: max-age=0Upgrade-Insecure-Requests: 1User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.5735.199 Safari/537.36Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7Referer: http://ctf-isip.tyc4d.tw:8001/Accept-Encoding: gzip, deflateAccept-Language: en-US,en;q=0.9Cookie: session=286d8192-f687-4fc2-b45c-a18c8df0a7d1.vMjCIR82uYDbDrjYWiH2zW9GPs4Connection: close
 
 ```
 ## Welcome2SQL

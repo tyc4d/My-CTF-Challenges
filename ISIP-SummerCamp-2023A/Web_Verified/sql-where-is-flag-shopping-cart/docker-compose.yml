@@ -1,0 +1,26 @@
+version: '3.3'
+#test
+services:
+  phpapache2:
+    image: titangene/php-apache-mysql:v1.0
+    #build: ./php
+    ports:
+      - "8056:80"
+    depends_on:
+      - mysql2
+    volumes:
+      - ./src:/var/www/html
+  mysql2:
+    build: ./
+    #image: mysql:5.6
+    volumes:
+      - mysql2_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: test
+      MYSQL_DATABASE: shop_database
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: mysql_database_password
+volumes:
+  mysql2_data: {}
+
+

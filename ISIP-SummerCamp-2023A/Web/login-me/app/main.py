@@ -51,17 +51,20 @@ def login():
 
     if not username or not password:
         return redirect("/?failed")
+    try:
+        cur = get_db().execute(
+            f"SELECT * FROM admin WHERE (username='{username}') AND (password='{password}')"
+        )
+        res = cur.fetchone()
+        cur.close()
+        if res:
+            return render_template("panel.html",
+                                username=username)
+            #return "FLAG{lab_flag}"
+    except Exception as error:
+        return str(error)
 
-    cur = get_db().execute(
-        f"SELECT * FROM admin WHERE (username='{username}') AND (password='{b64encode(password.encode()).decode()}')"
-    )
-    res = cur.fetchone()
-    cur.close()
 
-    if res:
-        return render_template("panel.html",
-                           username=username)
-        #return "FLAG{lab_flag}"
 
     return redirect("/?failed")
 

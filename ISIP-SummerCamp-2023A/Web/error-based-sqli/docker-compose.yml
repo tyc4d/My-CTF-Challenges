@@ -1,0 +1,28 @@
+version: '3.3'
+
+services:
+  phpapache:
+    image: titangene/php-apache-mysql:v1.0
+    build: ./php
+    ports:
+      - "8055:80"
+    depends_on:
+      - mysql
+    volumes:
+      - ./src:/var/www/html
+  mysql:
+    build: ./
+    #image: mysql:5.6
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: mysql_root_password
+      MYSQL_DATABASE: mydb
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: mysql_database_password
+volumes:
+  mysql_data: {}
+
+

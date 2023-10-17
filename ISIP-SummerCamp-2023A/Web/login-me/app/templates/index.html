@@ -47,24 +47,7 @@
         </div>
     </div>
 
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const magic = document.getElementById("magic");
-        const hint = document.getElementById("hint");
-        const form = document.getElementById("form");
-        const username = document.getElementById("usernamemagic");
-        const password = document.getElementById("passwordmagic");
 
-        magic.addEventListener('click', () => {
-            hint.classList.toggle("hidden");
-        });
-
-        form.addEventListener('input', () => {
-            username.textContent = form.username.value;
-            password.textContent = btoa(form.password.value);
-        });
-    });
-</script>
 </body>
 
 </html>

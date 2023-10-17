@@ -6,7 +6,7 @@ services:
     volumes:
       - ./find-method/app/:/app
     ports:
-      - 8010:80/tcp
+      - 8007:80/tcp
   where-is-edward:
     image: tiangolo/uwsgi-nginx-flask:python3.8
     volumes:
@@ -25,12 +25,6 @@ services:
       - ./login-me-basic/app/:/app
     ports:
       - 8003:80/tcp
-  where-are-you:
-    image: tiangolo/uwsgi-nginx-flask:python3.8
-    volumes:
-      - ./login-me/app/:/app
-    ports:
-      - 8004:80/tcp
   you-cant-see-me:
     image: tiangolo/uwsgi-nginx-flask:python3.8
     volumes:

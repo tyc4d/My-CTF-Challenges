@@ -1,0 +1,140 @@
+version: "3"
+
+services:
+  find-method:
+    image: tiangolo/uwsgi-nginx-flask:python3.8
+    volumes:
+      - ./find-method/app/:/app
+    ports:
+      - 8007:80/tcp
+
+  cookie-leak:
+    build: ./cookie-leak
+    volumes:
+      - ./cookie-leak/app/:/app
+    ports:
+      - 8002:80/tcp
+
+  point-shop:
+    image: tiangolo/uwsgi-nginx-flask:python3.8
+    volumes:
+      - ./point-shop/app/:/app
+    ports:
+      - 8100:80/tcp
+
+  fixmyblog-db:
+    build: ./FixMyBlog/db
+    volumes:
+      - fixmyblog_db_data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: wordpress_root_password
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: wp_database_password
+
+  fixmyblog-wordpress:
+    depends_on:
+      - fixmyblog-db
+    image: wordpress:latest
+    volumes:
+      - ./FixMyBlog/src:/var/www/html
+    ports:
+      - "8022:80"
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: fixmyblog-db
+      WORDPRESS_DB_USER: admin
+      WORDPRESS_DB_PASSWORD: wp_database_password
+      WORDPRESS_DB_NAME: wordpress
+
+  you-cant-see-me:
+    image: tiangolo/uwsgi-nginx-flask:python3.8
+    volumes:
+      - ./you-cant-see-me/app/:/app
+    ports:
+      - 8005:80/tcp
+
+  where-is-edward:
+    image: tiangolo/uwsgi-nginx-flask:python3.8
+    volumes:
+      - ./where-is-edward/app/:/app
+    ports:
+      - 8001:80/tcp
+
+  welcome2sql:
+    image: tiangolo/uwsgi-nginx-flask:python3.8
+    volumes:
+      - ./welcome2sql/app/:/app
+    ports:
+      - 8003:80/tcp
+
+  shopping-cart:
+    image: titangene/php-apache-mysql:v1.0
+    ports:
+      - "8056:80"
+    depends_on:
+      - mysql2
+    volumes:
+      - ./sql-where-is-flag-shopping-cart/src:/var/www/html
+  mysql2:
+    build: ./sql-where-is-flag-shopping-cart/db
+    volumes:
+      - mysql2_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: test
+      MYSQL_DATABASE: shop_database
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: mysql_database_password
+  let-the-cow-moow:
+    build: ./let-the-cow-moow
+    ports:
+      - "8008:80"
+
+  # Database
+  realword-wpdb:
+    build: ./RealWorld/db
+    volumes:
+      - real_world_data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password@root
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress_Admin
+    networks:
+      - wpsite
+  # phpmyadmin
+  phpmyadmin:
+    depends_on:
+      - realword-wpdb
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    ports:
+      - '8380:80'
+    environment:
+      PMA_HOST: realword-wpdb
+      MYSQL_ROOT_PASSWORD: password 
+    networks:
+      - wpsite
+  # Wordpress
+  wordpress:
+    depends_on:
+      - realword-wpdb
+    image: wordpress:php8.0-apache
+    ports:
+      - '8300:80'
+    restart: always
+    volumes: ['./RealWorld/src:/var/www/html']
+    environment:
+      WORDPRESS_DB_HOST: realword-wpdb:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress_Admin
+    networks:
+      - wpsite
+networks:
+  wpsite:
+volumes:
+  real_world_data: {}
+  mysql2_data: {}
+  fixmyblog_db_data: {}

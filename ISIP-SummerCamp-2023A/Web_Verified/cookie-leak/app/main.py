@@ -1,7 +1,7 @@
 # -*- coding:utf8 -*-
 from flask import Flask, render_template, redirect, request, session,make_response
 import jwt
-app = Flask(__name__,static_folder='static/')
+app = Flask(__name__,static_folder='static/', static_url_path="")
 
 SECRETKEY="isipctf_key"
 

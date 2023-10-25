@@ -20,7 +20,10 @@ P.S. 第一題 Port 8007 的題目請依照順序解題
 ## Mystery Header ?
 > 網路餅乾莫名其妙就跑到我的電腦上了，他是怎麼被新增進來的呢？你能透過觀察開發者工具的網路流量中，找出該伺服器回應的神秘 Header 嗎？請試著登入看看管理系統，帳號密碼為 guest / guest 提交FLAG的時候，請直接打出 HTTP Header 的名稱例如：X-Forward-For
 - [ ] Port: 8007
-## Find Cookies
+## Find Mystery Cookies
+> 那你知道在哪裡可以修改跟檢視 Cookie 嗎？找找看除了 UserID 有沒有其他神秘的 Cookie ?
+- [ ] Port: 8007
+## Modify the Cookie !
 > 那你知道在哪裡可以修改跟檢視 Cookie 嗎？聽說把 Cookie 改成 admin 好像就可以看到一些神秘的頁面喔！
 - [ ] Port: 8007
 ## Find DELETE METHOD

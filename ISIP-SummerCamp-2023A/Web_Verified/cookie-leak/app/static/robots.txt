@@ -1,0 +1,8 @@
+User-agent: googlebot
+Disallow: /nogooglebot/
+Disallow: /backup/key.md
+
+User-agent: *
+Allow: /
+
+Sitemap: https://www.example.com/sitemap.xml

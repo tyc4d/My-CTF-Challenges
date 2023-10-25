@@ -21,7 +21,7 @@ P.S. 第一題 Port 8007 的題目請依照順序解題
 > 網路餅乾莫名其妙就跑到我的電腦上了，他是怎麼被新增進來的呢？你能透過觀察開發者工具的網路流量中，找出該伺服器回應的神秘 Header 嗎？請試著登入看看管理系統，帳號密碼為 guest / guest 提交FLAG的時候，請直接打出 HTTP Header 的名稱例如：X-Forward-For
 - [ ] Port: 8007
 ## Find Cookies
-> 那你知道Cookie 的內容是什麼嗎？聽說把餅乾改成 admin 好像就可以看到一些神秘的頁面喔！
+> 那你知道在哪裡可以修改跟檢視 Cookie 嗎？聽說把 Cookie 改成 admin 好像就可以看到一些神秘的頁面喔！
 - [ ] Port: 8007
 ## Find DELETE METHOD
 > 我好像發現一個API，可以拿來刪除使用者誒！可是我只是一個版主，我可以偷偷刪掉別人嗎？聽到開發人員在討論，刪除的方法好像有點特別，不是一般人碰得到的Method ...那我該用什麼Method 呢？提示：請使用 BurpSuite / Postman 做送出

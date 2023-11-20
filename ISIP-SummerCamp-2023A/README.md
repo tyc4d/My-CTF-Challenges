@@ -78,10 +78,12 @@ Connection: close
 > 一般RDBMS (關聯式資料庫管理系統)，都會存有一個TABLE(資料表)，你知道怎麼利用裡面的資訊，來查詢有甚麼樣子的欄位嗎?
 請幫助宸宸尋找flag_table中，有幾個欄位的類型是 varchar ? 
 Hint: 答案只需要填寫數字
+Hint: 請使用 SQLMAP
 - [ ] Port: 8056
 
 ## Dump All Data!
-> 小宸已經學會如何使用 information_schema了，現在他想玩拼拼看，你可以拼出正確的語法，藉由登入網站所回傳的結果，來選出幾千筆客戶資料中，唯一的一筆 FLAG 嗎？ Use SQLMAP
+> 小宸已經學會如何使用 information_schema了，現在他想玩拼拼看，你可以拼出正確的語法，藉由登入網站所回傳的結果，來選出幾千筆客戶資料中，唯一的一筆 FLAG 嗎？
+Hint: 請使用 SQLMAP
 - [ ] Port: 8056
 
 ## Let the cow Moooooooooow

@@ -6,7 +6,7 @@ app = Flask(__name__,static_folder='static/')
 @app.route("/",methods=["GET"])
 def home():
     resp = make_response(render_template("index.html"))
-    resp.headers["Flag-From-Server"] = "FLAG{N0w_u_k0nw_g3t_method}"
+    resp.headers["Flag-From-Server"] = "FLAG{Now_u_k0nw_g3t_method_32rfwk}"
     return resp
     
 
@@ -23,7 +23,7 @@ def login():
         if username == "guest" and password=="guest":
             resp = make_response(render_template("panel.html",usern="guest"))
             resp.set_cookie("userID","guest")
-            resp.set_cookie("userSpecialData","FLAG{dont_st0r3_C00kie_in_c1i3nt}")
+            resp.set_cookie("userSpecialData","FLAG{dont_st0r3_C00kie_in_c1i3nt_32dqewe}")
             return resp
         elif username == "admin":
             errorMsg = '<div class="ts-notice is-negative u-top-spaced-large"><div class="title">此帳號已停用</div><div class="content">P.S. 試試看先登入其他帳號?</div></div>'
@@ -37,7 +37,7 @@ def login():
 def admin_home():
     name = request.cookies.get('userID')
     if name == "admin":
-        return render_template("panel-flag.html",usern=name,flagmsg="FLAG{dont_st0r3_C00kie_in_c1i3nt}")
+        return render_template("panel-flag.html",usern=name,flagmsg="FLAG{dont_st0r3_C00kie_in_c1i3nt_3ed2qw}")
     else:
         return redirect("/login",302)
 @app.route("/logout",methods=["GET"])

@@ -59,7 +59,7 @@ def login():
     cur.close()
 
     if res:
-        flag = "FLAG{W31c0me_2_SQLi}"
+        flag = "FLAG{W31c0me_2_SQLi_dqwd2ew}"
         return render_template("panel.html",
                            username=username,flag=flag)
 

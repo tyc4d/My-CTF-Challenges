@@ -19,7 +19,7 @@ INSERT INTO `tblproduct` (`id`, `name`, `code`, `image`, `price`) VALUES
 (2, 'Enterprise Hard Disk Drive 100GB SAS', 'hdd100GBExSAS', 'product-images/disk.png', 800),
 (3, 'Apooo Watch 12S b Series', 'watchQ12Sb', 'product-images/watch.png', 300),
 (4, 'Do11 Laptop 24core/16GB', 'DoLT2416', 'product-images/laptop.png', 800),
-(5, 'FLAG{Th3_secret_0f_wh3r3_5tatement}', 'FLAG', 'product-images/flag.png', 7777);
+(5, 'FLAG{Th3_secret_0f_wh3r3_5tatement_r32few}', 'FLAG', 'product-images/flag.png', 7777);
 
 --
 -- Indexes for table `tblproduct`

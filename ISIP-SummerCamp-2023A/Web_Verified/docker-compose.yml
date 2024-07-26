@@ -1,8 +1,16 @@
 version: "3"
 
 services:
+
   find-method:
     image: tiangolo/uwsgi-nginx-flask:python3.8
+    container_name: find-method
+    environment:
+      - VIRTUAL_HOST=find-method.tyc4d.tw
+      - LETSENCRYPT_HOST=find-method.tyc4d.tw
+      - LETSENCRYPT_EMAIL=gendenskin@gmail.com
+    expose:
+      - "8007"
     volumes:
       - ./find-method/app/:/app
     ports:

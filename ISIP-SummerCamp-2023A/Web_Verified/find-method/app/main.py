@@ -33,6 +33,22 @@ def login():
             return render_template("login.html",errorMsg=errorMsg)
     return render_template("login.html",errorMsg=errorMsg)
 
+@app.route("/try-header",methods=["GET"])
+def admin_try():
+    ua = request.headers.get("User-Agent")
+    if ua == "Edward/1.0":
+        return render_template("panel-flag.html",flagmsg="FLAG{localhost_secret}")
+    else:
+        return render_template("403.html")
+
+@app.route("/secret-of-header",methods=["GET"])
+def admin_forward():
+    ip = request.headers.get("X-Forward-For")
+    if ip == "127.0.0.1":
+        return render_template("panel-flag.html",flagmsg="FLAG{localhost_secret}")
+    else:
+        return redirect("/login",302)
+
 @app.route("/now-you-know-my-secret-path123",methods=["GET"])
 def admin_home():
     name = request.cookies.get('userID')
@@ -40,6 +56,7 @@ def admin_home():
         return render_template("panel-flag.html",usern=name,flagmsg="FLAG{dont_st0r3_C00kie_in_c1i3nt_3ed2qw}")
     else:
         return redirect("/login",302)
+
 @app.route("/logout",methods=["GET"])
 def admin_logout():
     resp = make_response(redirect("/login",302))

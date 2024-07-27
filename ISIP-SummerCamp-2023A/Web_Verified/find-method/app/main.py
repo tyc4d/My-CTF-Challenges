@@ -33,27 +33,36 @@ def login():
             return render_template("login.html",errorMsg=errorMsg)
     return render_template("login.html",errorMsg=errorMsg)
 
+@app.route("/submit-email",methods=["POST"])
+def submit_emails():
+    if request.method == "POST":
+        email = request.form["email"]
+        if (email):
+            return str("在提交請求的封包中，你有觀察到flag嗎?")
+        else:
+            return str("回到上一頁請重新提交一次")
+
 @app.route("/try-header",methods=["GET"])
 def admin_try():
     ua = request.headers.get("User-Agent")
     if ua == "Edward/1.0":
-        return render_template("panel-flag.html",flagmsg="FLAG{localhost_secret}")
+        return render_template("panel-flag.html",flagmsg="FLAG{browser_secret}")
     else:
-        return render_template("403.html")
+        return render_template("403.html",message='請使用 Edward/1.0 作為你的<a href="https://developer.mozilla.org/zh-TW/docs/Web/HTTP/Headers/User-Agent" >瀏覽器</a>來留此頁面')
 
 @app.route("/secret-of-header",methods=["GET"])
 def admin_forward():
-    ip = request.headers.get("X-Forward-For")
+    ip = request.headers.get("X-Forwarded-For")
     if ip == "127.0.0.1":
-        return render_template("panel-flag.html",flagmsg="FLAG{localhost_secret}")
+        return render_template('panel-flag.html',flagmsg='FLAG{localhost_secret}')
     else:
-        return redirect("/login",302)
+        return render_template('403.html',message='請使用 本地IP <a href="https://developer.mozilla.org/zh-TW/docs/Web/HTTP/Headers/X-Forwarded-For">127.0.0.1</a> 來瀏覽此頁面')
 
 @app.route("/now-you-know-my-secret-path123",methods=["GET"])
 def admin_home():
     name = request.cookies.get('userID')
     if name == "admin":
-        return render_template("panel-flag.html",usern=name,flagmsg="FLAG{dont_st0r3_C00kie_in_c1i3nt_3ed2qw}")
+        return render_template("panel-flag.html",usern=name,flagmsg="FLAG{now_u_know_h2_modify}")
     else:
         return redirect("/login",302)
 

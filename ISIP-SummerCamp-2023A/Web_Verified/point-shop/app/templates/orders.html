@@ -35,11 +35,10 @@
         <p>哈囉初心者, 你還有<span class="title has-text-centered mb-6 tag is-primary ml-2">${{session.money}}</span> 摳摳</p>
 
     <h1 class="title">Order list</h1>
-    <ol>
         {% for item in session.stuff %}
         <li>
             你購買了 <b>{{item.0}}</b>
-            {% if item.0 == "FLAG" %}<code>FLAG{BrokenAccessControl_STEP2_Parameter_e3dwdwd}</code>{% endif %}
+            {% if item.0 == "FLAG Point" %}<code>FLAG{BrokenAccessControl_STEP2_Parameter_e3dwdwd}</code>{% endif %}
         </li>
         {% else %}
             <p>你甚麼都沒訂...趕緊的</p>
